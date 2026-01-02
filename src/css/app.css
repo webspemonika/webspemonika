@@ -1,0 +1,242 @@
+
+#testimonial .swiper {
+    /* background:red; */
+    padding-bottom: 50px;
+    padding-top: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+#testimonial .swiper .swiper-pagination-bullet {
+    margin: 6px;
+    background-color: #999;
+    position: relative;
+}
+
+#testimonial .swiper .swiper-pagination-bullet-active {
+    background-color: #ff014f;
+    /* background-color: transparent; */
+}
+
+#testimonial .swiper .swiper-pagination-bullet-active::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: -6px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ff014f;
+    border-radius: 100%;
+}
+/* social-link start........................ */
+/* inital-design of social */
+.social-link {
+    /* 1...content(typography) */
+    font-size: 20;
+    color: white;
+    /* 2...content(layout) */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* background-color: #141414; initial bg color */
+    background-color: #9999993e;
+    /* 3...display  */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    /* 4...position */
+    position: relative;
+    z-index: 1;
+    /* 5...transition & animation */
+    transition: color .3s ease-in-out;
+}
+/* hover after-design of social */
+.social-link::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: -1;
+    /*  */
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #ff014f; /* hover background color*/
+    /*  */
+    transform: scale(0);
+    opacity: 0;
+    transition: transform .4s ease,
+        opacity .4s ease;
+}
+
+.social-link:hover {}
+
+.social-link:hover::after{
+    transform :scale(1);
+    opacity:1;
+}
+
+/* social-link end........................ */
+
+/* single-line slide underline start...... */
+.slide-underline {
+    position: relative;
+    display: inline-block;
+    transition: color .5s ease-in-out
+}
+
+.slide-underline::after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 2px;
+    background-color: #ff014f;
+
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform .5s ease-in-out;
+
+}
+
+.slide-underline:hover {
+    color: #ff014f
+}
+
+.slide-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left
+}
+
+/* single-line slide underline end...... */
+/* arrow slide btn start... */
+.arrow-btn {
+    /* font-size: 20px; */
+    color: #fff;
+    font-weight: 600;
+    font-family: Arial, sans-serif;
+    /* background: #00B207; */
+    cursor: pointer;
+
+    display: inline-flex;
+justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+
+    border-radius: 100px;
+}
+
+/* Default State */
+.arrow-btn .arrow.left {
+    font-size: 20px;
+    opacity: 0;
+    transform: translateX(-15px);
+    transition: .35s ease-in-out;
+    /* <-- এখানে transition থাকতে হবে */
+}
+
+.arrow-btn .arrow.right {
+    font-size: 20px;
+    opacity: 1;
+    transition: .35s ease-in-out;
+    /* <-- Transition default state */
+}
+
+.arrow-btn .text {
+    font-size: 16px;
+    transition: .35s ease;
+    /* <-- এখানেও default transition */
+}
+
+/* Hover State */
+.arrow-btn:hover .arrow.left {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.arrow-btn:hover .arrow.right {
+    opacity: 0;
+    transform: translateX(15px);
+}
+
+.arrow-btn:hover .text {
+    transform: translateX(8px);
+}
+
+@media (max-width: 993.98px) {
+    .arrow-btn {
+          padding: 10px 12px;
+    }
+    .arrow-btn .text {
+        font-size: 12px;
+    }
+
+    .arrow-btn .arrow.left,
+    .arrow-btn .arrow.right {
+        font-size: 12px;
+    }
+
+}
+/* arrow slide btn end... */
+/* preloader start.............. */
+.loader-container {
+    height: 100vh;
+    background-color: #99999900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+/* Outer animated circles */
+.loader::after,
+.loader::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 5px solid #ff014f;
+    border-radius: 50%;
+    animation: loader 1.5s infinite linear;
+}
+
+.loader::after {
+    animation-delay: .4s;
+}
+
+@keyframes loader {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90%,
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* Center small circle */
+.loader .center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 10px;
+    width: 10px;
+    background-color: white;
+    /* border :1px solid #ff1 */
+    border-radius: 50%;
+}
+/* preloader end......... */
