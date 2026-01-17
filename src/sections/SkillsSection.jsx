@@ -22,7 +22,7 @@ const SkillsSection = () => {
             id: 4,
             name: 'react',
             label: "70%",
-        },    {
+        }, {
             id: 5,
             name: 'next.js',
             label: "30%",
@@ -33,52 +33,63 @@ const SkillsSection = () => {
     const developmentSkills = [
         {
             id: 1,
-            name: 'php',
-            label: "80%", 
+            name: 'api development',
+            label: "80%",
         },
         {
             id: 2,
-            name: 'laravel',
+            name: 'php',
             label: "80%",
         },
         {
             id: 3,
-            name: 'mysql',
+            name: 'laravel',
             label: "80%",
         },
-           {
+        {
             id: 4,
             name: 'mysql',
             label: "80%",
         },
-              {
+        {
             id: 5,
-            name: 'mysql',
+            name: 'dsa',
             label: "80%",
         },
+
     ]
 
 
     return (
         <section id="skill" className=" py-8 lg:py-20">
             <div className="container">
-                <div className="  mobile-padding grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10 ">
-                    {/* left content start... */}
-                    <div className="w-full">
-                        <SkillLayout
-                            heading={"design skill"}
-                            skills={designSkills}
-                        />
+                <div className="  mobile-padding  ">
+                    {/* header start if you want skill section's header then use it otherwise ok   */}
+                    {/* <div className="">
+                        <p className=""> </p>
+
+                    </div> */}
+                    {/* header end  */}
+                    {/* body start  */}
+                    <div className=" grid  grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10 ">
+                        {/* left content start... */}
+                        <div className="w-full">
+                            <SkillLayout
+                                heading={"design skill"}
+                                skills={designSkills}
+                            />
+                        </div>
+                        {/* left content end... */}
+                        {/* right content start... */}
+                        <div className="w-full">
+                            <SkillLayout
+                                heading={"development skill"}
+                                skills={developmentSkills}
+                            />
+                        </div>
+                        {/* right content end */}
                     </div>
-                    {/* left content end... */}
-                    {/* right content start... */}
-                    <div className="w-full">
-                        <SkillLayout
-                            heading={"development skill"}
-                            skills={developmentSkills}
-                        />
-                    </div>
-                    {/* right content end */}
+                    {/* body end  */}
 
 
                 </div>

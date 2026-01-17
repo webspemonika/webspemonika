@@ -7,6 +7,7 @@
 body {
     /* background-color: #f2f2f2; */
     background-color: black;
+    /* padding-top: 70px; */
 }
 
 /* Dark mode */
@@ -27,7 +28,9 @@ body.dark {
 }
 
 /* custom utility class...*/
+/* 1.layout start--------------------------------------------------------------- */
 @layer utilities {
+
     .container {
         @apply max-w-7xl mx-auto;
     }
@@ -40,20 +43,61 @@ body.dark {
         @apply px-1 lg:px-0;
     }
 
-    .nav-link {
-        @apply text-base font-medium font-rubik leading-[150%] capitalize;
-    }
+    /* layout end */
 
-    /* .sm-text {}
 
-    .base-text {}
-
-    .lg-text {} */
-    .input-field {
-        @apply inline-block px-3.75 py-3 lg:py-5 border border-[#ffffff14] rounded-[10px] text-sm lg:text-base text-white font-medium font-rubik capitalize caret-[#ff014f] focus:outline-2 focus:outline-[#ff014f]
-    }
+  
 }
 
-/* text- text- font- font- leading-[] tracking- uppercase 
-#1a1a1a
-*/
+/* 2.text-typo start---------------------------------------------------------------  */
+@layer utilities {
+
+
+    /* 2.1number category(xs, sm) */
+
+    /* 2.2 number category(base) */
+    .base-text-gray {
+        @apply text-xs lg:text-base text-[#9f9f9f] font-normal font-rajdhani leading-[150%] capitalize
+    }
+
+    .base-text-branding {
+        @apply text-base text-[#ff014f] font-medium font-rubik leading-[100%] tracking-widest capitalize
+    }
+
+    .nav-link {
+        @apply text-base text-white font-medium font-rubik leading-[150%] capitalize;
+    }
+
+    /* 2.3number typo(lg,xl,2xl) */
+
+    /* 2.4large category typo */
+    .heading-text-48px {
+        @apply text-[25px] lg:text-[48px] text-[#ffffff] font-bold font-rajdhani leading-[130%] my-2.5 lg:capitalize;
+    }
+
+    /* text-typo end */
+}
+
+/*3. button typo start--------------------------------------------------------------- */
+@layer utilities {
+.contact-btn{
+    @apply size-10 lg:size-12.5  border border-[#ffffff14] rounded-full inline-flex justify-center items-center
+}
+    .swiper-left {
+        @apply cursor-pointer inline-flex justify-center items-center size-11.25 hover:bg-[#ff014f] border border-[#999] hover:border-[#ff014f] rounded-full hover:text-white text-[#999] text-base transition-colors duration-300
+    }
+
+    .swiper-right {
+        @apply cursor-pointer inline-flex justify-center items-center size-11.25 hover:bg-[#ff014f] border border-[#999] hover:border-[#ff014f] rounded-full hover:text-white text-[#999] text-base transition-colors duration-300
+    }
+
+    /* button typo end */
+}
+/* 4.additional typo ---------------------------------------------------------------*/
+@layer utilities{
+    .input-field {
+        @apply inline-block px-3.75 py-3 lg:py-5 border border-[#ffffff14] rounded-[10px] text-sm lg:text-base text-white font-medium font-rubik capitalize caret-[#ff014f] focus:outline-3 focus:outline-[#ff014f]
+    }
+
+    /* additional typo end */
+}

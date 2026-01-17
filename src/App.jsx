@@ -5,6 +5,7 @@ import 'locomotive-scroll/dist/locomotive-scroll.css';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import FrontEndLayout from './layout/FrontEndLayout';
 import HomePage from './pages/HomePage';
+import ProjectDetailsPage from './pages/ProjectDetailsPage';
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route element={<FrontEndLayout />} >
           <Route path='/' element={<HomePage />} />
+          <Route path='/project-details' element={<ProjectDetailsPage/>} />
         </Route>
       </Routes>
     </BrowserRouter>

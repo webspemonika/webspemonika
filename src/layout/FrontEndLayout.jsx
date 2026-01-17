@@ -5,17 +5,20 @@ import Footer from '../components/Footer';
 import Preloader from '../utils/Preloader';
 import CustomCursor from '../utils/CustomCursor';
 import ScrollToTop from '../utils/ScrollToTop';
-// import FixedWhatsappIcon from '../utils/WhatsappIcon';
+import { useLocation } from 'react-router';
 
 const FrontEndLayout = () => {
   const [loading, setLoading] = useState(true);
+
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
 
   // Preloader effect
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
   }, []);
-
 
 
   // Preloader দেখান
@@ -28,18 +31,15 @@ const FrontEndLayout = () => {
       <ScrollToTop />
       <CustomCursor />
 
-      <header>
-        <Header />
-      </header>
-
-      <main>
-        <Outlet />
+      <Header />
+      <main className={`${isHomePage? "pt-0 ": "pt-20" }`}>
+        {/* all routes */}
+        <Outlet/>
       </main>
 
       <footer>
         <Footer />
       </footer>
-
     </div>
   );
 };

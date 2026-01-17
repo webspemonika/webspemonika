@@ -17,7 +17,6 @@ const HomePage = () => {
         <>
        
             <HeroSection />
-            {/* <HeaderHero/> */}
             <FeatureSection />
             <Resume />
             <SkillsSection />

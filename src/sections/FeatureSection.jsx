@@ -52,7 +52,7 @@ const FeatureSection = () => {
                                     className='size-13.75 object-cover '
 
                                 />
-                                <h6 className="text-base lg:text-xl text-white font-bold font-rajdhani my-2 lg:my-5 capitalize "> {feature.title} </h6>
+                                <h6 className="text-base lg:text-xl text-white font-bold font-rajdhani capitalize my-2 lg:my-5  "> {feature.title} </h6>
                                 <p className="text-sm lg:text-base text-white-50 font-normal font-rubik leading-5 lg:leading-7 normal-case "> {feature.description} </p>
 
                             </div>

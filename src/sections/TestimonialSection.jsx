@@ -87,14 +87,8 @@ const TestimonialSection = () => {
                     </div>
                     {/* swiper navigation btn.. */}
                     <div className="hidden lg:flex gap-3">
-                        <button type="button" className=' prev-btn cursor-pointer inline-flex justify-center items-center size-11.25 border border-[#999] rounded-full  
-                        hover:bg-[#ff014f] hover:border-[#ff014f] hover:text-white text-[#999] text-base transition-colors duration-300
-                        '><FaArrowLeft />
-                        </button>
-                        <button type="button" className=' next-btn cursor-pointer inline-flex justify-center items-center size-11.25 border border-[#999] rounded-full  
-                        hover:bg-[#ff014f] hover:border-[#ff014f] hover:text-white text-[#999] text-base transition-colors duration-300
-                        '><FaArrowRight />
-                        </button>
+                        <span className=' prev-btn swiper-left'><FaArrowLeft /></span>
+                        <span className=' next-btn swiper-right '><FaArrowRight /></span>
                     </div>
                 </div>
                 {/* header end... */}

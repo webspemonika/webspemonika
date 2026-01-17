@@ -235,7 +235,7 @@ justify-content: center;
     transform: translate(-50%, -50%);
     height: 10px;
     width: 10px;
-    background-color: white;
+    background-color: #ff014f;
     /* border :1px solid #ff1 */
     border-radius: 50%;
 }
