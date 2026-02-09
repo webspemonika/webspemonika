@@ -26,11 +26,11 @@ const ProjectArchitectureSection = () => {
             <div className="container">
                 <div className="mobile-padding">
                     <h2 className="text-lg lg:text-3xl text-[#ff014f] font-medium font-poppins leading-[120%] tracking-wider uppercase   "> single vendor project architecture </h2>
-                    <div className="flex gap-10">
+                    <div className="grid grid-cols-4 gap-1">
                        {diagrams.map((diagram)=>{
                         return(
                              <div className="">
-                            <p className="h-50 w-50 inline-flex justify-center items-center border border-white text-xl text-white font-rubik font-semibold "> {diagram.heading}</p>
+                            <p className="h-5 w-5 inline-flex justify-center items-center border border-white text-xl text-white font-rubik font-semibold "> {diagram.heading}</p>
                         </div>
                         )
                        })}

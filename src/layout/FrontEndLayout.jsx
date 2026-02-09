@@ -29,7 +29,7 @@ const FrontEndLayout = () => {
   return (
     <div>
       <ScrollToTop />
-      <CustomCursor />
+      {/* <CustomCursor /> */}
 
       <Header />
       <main className={`${isHomePage? "pt-0 ": "pt-20" }`}>

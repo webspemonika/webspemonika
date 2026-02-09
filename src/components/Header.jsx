@@ -5,11 +5,21 @@ import { IoClose } from 'react-icons/io5';
 import { MdOutlineDarkMode, MdOutlineLightMode } from 'react-icons/md';
 import { Link } from 'react-router';
 import { HashLink } from 'react-router-hash-link';
+import DarkLightMode from '../utils/DarkLightMode';
 
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(true);
   const [scroll, setScroll] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showCrossIcon, setShowCrossIcon] = useState(false);
+  const mouseMoveHandler = (e) => {
+    // overlay এর relative position থেকে mouse position বের করুন
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+  };
   // Scroll detection effect......
   const scrollHandler = () => {
     if (window.scrollY > 60) {
@@ -22,22 +32,13 @@ const Header = () => {
     window.addEventListener('scroll', scrollHandler);
     return () => window.removeEventListener('scroll', scrollHandler);
   }, []);
-  // dark and light mode effect .............
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
+
   // mobile menu ...
-  const handleMenuClose = () => {
-    setMobileMenu(false);
-  };
+  const handleMenuClose = () => { setMobileMenu(false) };
   return (
     // fixed position dila perfectly kaj korcha. but i want to sticky
     <header className={` py-5 w-full fixed top-0 left-0 z-1000 transition-all duration-700 
-        ${scroll ? 'bg-white fixed dark:bg-white/10 backdrop-blur-xl  shadow-xl' : ''}`
+        ${scroll ? '  bg-white/10 backdrop-blur-xl  shadow-xl' : ''}`
     }>
       <nav
         className={` w-full`}
@@ -74,68 +75,43 @@ const Header = () => {
             {/* mobile sidebar start.... */}
             {/*1. sidebar overlay  */}
             <div
-              className={`fixed inset-0 bg-black/70 h-screen  z-110 lg:hidden transition-all duration-1000 ease-in-out 
-                ${mobileMenu ? 'opacity-100 visible' : 'opacity-0 invisible'  }`
-              }
               onClick={handleMenuClose}
+              onMouseMove={mouseMoveHandler}
+              onMouseEnter={() => setShowCrossIcon(true)}
+              onMouseLeave={() => setShowCrossIcon(false)}
+              className={`fixed inset-0 z-110 bg-white/30   lg:hidden 
+                           transition-all duration-1000 ease-in-out  
+                          ${mobileMenu ? 'opacity-100 visible' : 'opacity-0 invisible'}
+                `}  
             >
-
-              {/* 2.sidebar container .... */}
-              <div
-                className={`  fixed top-0 left-0 h-screen w-[70vw] bg-white dark:bg-black z-120
-                transform transition-all duration-1000 ease-in-out  
-                ${mobileMenu ? 'translate-x-0 opacity-100 ' : '-translate-x-full opacity-0 '}
-              }`}
-              >
-                {/* Sidebar Header */}
-                <div className="flex justify-between items-center p-5   border-b border-gray-200 dark:border-gray-700">
-                  <img
-                    src="/logos/nav-logo.png"
-                    alt="nav-logo"
-                    className="h-8"
-                  />
-                  <button
-                    onClick={handleMenuClose}
-                    className="text-black dark:text-white text-3xl cursor-pointer "
-                  >
-                    <IoClose />
-                  </button>
+              {/* Custom Cursor - Cross Icon */}
+              {showCrossIcon && (
+                <div
+                  className="fixed pointer-events-none z-130 transition-opacity duration-200"
+                  style={{
+                    left: `${mousePosition.x}px`,
+                    top: `${mousePosition.y}px`,
+                    transform: 'translate(-50%, -50%)' // center করার জন্য
+                  }}
+                >
+                  <span className="  text-white text-[50px] "><IoClose /></span>
                 </div>
-                {/* mobile-sidebar content start */}
-               <div className="px-2 py-3">
-                 <ul className='flex flex-col  divide-y divide-white/20'>
-                  <li> <HashLink smooth className="text-white/50 uppercase py-2 inline-block" to="#hero"> home </HashLink> </li>
-                  <li> <HashLink smooth className="text-white/50 uppercase py-2 inline-block" to="#resume"> resume </HashLink> </li>
-                  <li> <HashLink smooth className="text-white/50 uppercase py-2 inline-block" to="#skill"> skill </HashLink> </li>
-                  <li> <HashLink smooth className="text-white/50 uppercase py-2 inline-block" to="#project"> project </HashLink> </li>
-                  <li> <HashLink smooth className="text-white/50 uppercase py-2 inline-block" to="#testimonial"> testimonial </HashLink> </li>
-                  <li> <HashLink smooth className="text-white/50 uppercase py-2 inline-block" to="#contact"> contact </HashLink> </li>
-                </ul>
-               </div>
-                {/* mobile-sidebar content end */}
-              </div>
+              )}
             </div>
+            {/* 2.sidebar container .... */}
+            <div
+              className={`fixed top-0 left-0 h-screen w-[70vw] bg-black z-120
+                          transform transition-all duration-1500 ease-in-out  
+                          ${mobileMenu ? 'translate-x-0 opacity-100 visible  ' : '-translate-x-full opacity-0 invisible '}`}
+              onMouseEnter={() => setShowCrossIcon(false)}
+            >
+            
+            </div>
+
             {/* mobile sidebar end.... */}
 
             {/* dark mode and light mode */}
-            <div className="hidden lg:inline-flex items-center gap-2 p-1 rounded-full border border-[#ff014f]">
-              {/* Darkmode Button */}
-              <button
-                onClick={() => setDarkMode(true)}
-                className={`p-2 rounded-full transition-all cursor-pointer ${darkMode ? "bg-[#ff014f] text-white" : "dark:text-gray-700"
-                  }`}
-              >
-                <MdOutlineDarkMode size={18} />
-              </button>
-              {/* Lightmode Button */}
-              <button
-                onClick={() => setDarkMode(false)}
-                className={`p-2 rounded-full transition-all cursor-pointer ${!darkMode ? "bg-[#ff014f] text-white" : "dark:text-gray-700"
-                  }`}
-              >
-                <MdOutlineLightMode size={18} />
-              </button>
-            </div>
+          <DarkLightMode/>
             {/* right content end.... */}
           </div>
         </div>

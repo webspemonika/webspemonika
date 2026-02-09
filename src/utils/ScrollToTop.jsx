@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { GoArrowUp } from "react-icons/go";
 import WhatsappIcon from "./WhatsappIcon";
 import { HiOutlineArrowUp } from "react-icons/hi";
 
@@ -8,12 +7,11 @@ const ScrollToTop = () => {
    const scrollHandler = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const p = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setShowButton(Math.min(100, Math.max(0, p)));
+      const percentage = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setShowButton(Math.min(100, Math.max(0, percentage)));
     };
     useEffect(() => {
     window.addEventListener("scroll", scrollHandler);
-    // onScroll();
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
 

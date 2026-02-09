@@ -8,7 +8,7 @@ const HeroSection = () => {
     return (
         <>
 
-            <section id="hero" className=" relative bg-[url(/bg-images/nav-hero-bg.jpg)] bg-no-repeat bg-cover bg-center  pt-40 lg:pb-0 ">
+            <section id="hero" className=" relative bg-[url(/bg-images/light-nav-hero-bg.jpg)] dark:bg-[url(/bg-images/nav-hero-bg.jpg)] bg-no-repeat bg-cover bg-center  pt-40 lg:pb-0 ">
                 <div className="container">
                     <div className="mobile-padding grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-20 justify-between items-center   ">
                         {/* left content start... */}
